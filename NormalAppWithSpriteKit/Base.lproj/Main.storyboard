@@ -18,7 +18,7 @@
         <!--Configuration-->
         <scene sceneID="AaK-ND-l45">
             <objects>
-                <viewController id="skb-S1-xeA" customClass="ConfigurationViewController" customModule="NormalAppWithSpriteKitBase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="skb-S1-xeA" customClass="ConfigurationViewController" customModule="NormalAppWithSpriteKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NU8-1i-1B0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,8 +126,8 @@
         <!--Wheel-->
         <scene sceneID="UyJ-lL-4CT">
             <objects>
-                <viewController id="H4U-s6-Pnw" customClass="WheelViewController" customModule="NormalAppWithSpriteKitBase" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="96h-H0-dAx">
+                <viewController id="H4U-s6-Pnw" customClass="WheelViewController" customModule="NormalAppWithSpriteKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="96h-H0-dAx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

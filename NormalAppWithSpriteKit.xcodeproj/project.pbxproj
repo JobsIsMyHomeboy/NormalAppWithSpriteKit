@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C45E4F7221CE60100EC7BCC /* WheelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C45E4F6221CE60100EC7BCC /* WheelScene.sks */; };
+		5C45E4F9221CE63C00EC7BCC /* WheelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C45E4F8221CE63C00EC7BCC /* WheelScene.swift */; };
+		5C45E4FD221CEE6B00EC7BCC /* Firework.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5C45E4FB221CEE6B00EC7BCC /* Firework.sks */; };
 		5CB4B11C2219D40600DB991A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB4B11B2219D40600DB991A /* AppDelegate.swift */; };
 		5CB4B1212219D40600DB991A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4B11F2219D40600DB991A /* Main.storyboard */; };
 		5CB4B1232219D40800DB991A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB4B1222219D40800DB991A /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C45E4F6221CE60100EC7BCC /* WheelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WheelScene.sks; sourceTree = "<group>"; };
+		5C45E4F8221CE63C00EC7BCC /* WheelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelScene.swift; sourceTree = "<group>"; };
+		5C45E4FB221CEE6B00EC7BCC /* Firework.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firework.sks; sourceTree = "<group>"; };
 		5CB4B1182219D40600DB991A /* NormalAppWithSpriteKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NormalAppWithSpriteKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB4B11B2219D40600DB991A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CB4B1202219D40600DB991A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C45E4F5221CE5DF00EC7BCC /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				5C45E4F6221CE60100EC7BCC /* WheelScene.sks */,
+				5C45E4F8221CE63C00EC7BCC /* WheelScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		5C45E4FA221CEE4A00EC7BCC /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				5C45E4FB221CEE6B00EC7BCC /* Firework.sks */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
 		5CB4B10F2219D40600DB991A = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +89,8 @@
 		5CB4B11A2219D40600DB991A /* NormalAppWithSpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				5C45E4FA221CEE4A00EC7BCC /* Effects */,
+				5C45E4F5221CE5DF00EC7BCC /* Scenes */,
 				5CB4B13D2219DFD700DB991A /* Views */,
 				5CB4B1352219D49500DB991A /* ViewControllers */,
 				5CB4B1322219D46C00DB991A /* Objects */,
@@ -172,7 +197,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C45E4F7221CE60100EC7BCC /* WheelScene.sks in Resources */,
 				5CB4B1262219D40800DB991A /* LaunchScreen.storyboard in Resources */,
+				5C45E4FD221CEE6B00EC7BCC /* Firework.sks in Resources */,
 				5CB4B1232219D40800DB991A /* Assets.xcassets in Resources */,
 				5CB4B1212219D40600DB991A /* Main.storyboard in Resources */,
 			);
@@ -191,6 +218,7 @@
 				5CB4B1342219D47900DB991A /* Player.swift in Sources */,
 				5CB4B12F2219D42300DB991A /* UIColor+Additions.swift in Sources */,
 				5CB4B13C2219DC6D00DB991A /* NameGenerator.swift in Sources */,
+				5C45E4F9221CE63C00EC7BCC /* WheelScene.swift in Sources */,
 				5CB4B13A2219D65700DB991A /* WheelViewController.swift in Sources */,
 				5CB4B1372219D4A800DB991A /* ConfigurationViewController.swift in Sources */,
 			);

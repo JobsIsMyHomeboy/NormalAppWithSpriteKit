@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class WheelViewController: UIViewController {
     @IBOutlet private var timerLabel: UILabel!
@@ -27,6 +28,7 @@ class WheelViewController: UIViewController {
     }
     private var players: [Player]!
     private var timer: Timer?
+    private var wheelScene: WheelScene?
     
     public func configure(with players: [Player]) {
         self.players = players
@@ -35,6 +37,60 @@ class WheelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        if let view = view as? SKView {
+            if let scene = SKScene(fileNamed: "WheelScene") as? WheelScene {
+                let screenScale = UIScreen.main.scale
+                scene.size = CGSize(width: view.bounds.width * screenScale, height: view.bounds.height * screenScale)
+                scene.scaleMode = .aspectFit
+                scene.backgroundColor = .darkGray
+                
+                let wheelImages = generateWheelSprites()
+                scene.configureWith(players: players, wheelImage: wheelImages.wheelImage, wheelNormalImage: wheelImages.wheelNormalImage, delegate: self)
+                view.presentScene(scene)
+                
+                wheelScene = scene
+            }
+            
+            view.ignoresSiblingOrder = true
+            view.allowsTransparency = false
+            
+            //debugging
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
+    }
+    
+    private func generateWheelSprites() -> (wheelImage: UIImage?, wheelNormalImage: UIImage?) {
+        let side = (UIScreen.main.bounds.width - 10) * UIScreen.main.scale
+        let wheel = WheelView(frame: CGRect(x: 0, y: 0, width: side, height: side))
+        wheel.backgroundColor = .clear
+        wheel.configure(players: players)
+        view.addSubview(wheel)
+        
+        let wheelImage = generateWheelSprite(wheel: wheel)
+        let wheelNormalImage = generateWheelNormalSprite(wheel: wheel)
+        wheel.removeFromSuperview()
+        
+        return (wheelImage: wheelImage, wheelNormalImage: wheelNormalImage)
+    }
+    
+    private func generateWheelSprite(wheel: WheelView) -> UIImage? {
+        UIGraphicsBeginImageContext(wheel.bounds.size)
+        wheel.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let wheelImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return wheelImage
+    }
+    
+    private func generateWheelNormalSprite(wheel: WheelView) -> UIImage? {
+        wheel.redrawForNormalMap()
+        UIGraphicsBeginImageContext(wheel.bounds.size)
+        wheel.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let wheelNormalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return wheelNormalImage
     }
     
     override var shouldAutorotate: Bool {
@@ -78,8 +134,7 @@ private extension WheelViewController {
                         self.timerView.isHidden = true
                         self.timer?.invalidate()
                         
-                        // TODO: Wire up later
-                        self.displayMessageForWinner(self.players[0])
+                        self.wheelScene?.spinWheel()
                     })
                 }
                 
@@ -134,5 +189,21 @@ private extension WheelViewController {
         alertController.addAction(action)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension WheelViewController: WheelSceneDelegate {
+    func didBeginSpinning() {
+        spinButton?.isEnabled = false
+    }
+    
+    func didEndSpinningWithWinner(winner: Player?) {
+        if let winner = winner {
+            displayMessageForWinner(winner)
+        } else {
+            navigationController?.navigationBar.isUserInteractionEnabled = true
+            navigationController?.navigationBar.tintColor = view.tintColor
+            displayErrorMessage()
+        }
     }
 }
